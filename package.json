@@ -1,0 +1,7 @@
+{
+  "name": "scrabbux",
+  "version": "1.0.0",
+  "description": "scrabble but like... yea it's scrabble alright",
+  "main": "index.tsx",
+  "license": "MIT"
+}
