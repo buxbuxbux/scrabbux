@@ -6,7 +6,7 @@ import {
 } from '@microsoft/signalr'
 import { updateBoard } from './board-slice'
 import { useAppDispatch } from './hooks'
-import { Move } from '../types/board'
+import { MoveModel } from '../types/model'
 
 const connection = new HubConnectionBuilder()
   .withUrl('live/boardhub')
@@ -19,8 +19,8 @@ export const useRealTimeUpdates = () => {
 
   //   const [connection, setConnection] = useState<HubConnection>()
   const dispatch = useAppDispatch()
-  const onMessageReceived = useCallback((move: Move) => {
-    dispatch(updateBoard(move))
+  const onMessageReceived = useCallback((move: MoveModel) => {
+    // todo fix dispatch(updateBoard(move))
   }, [])
 
   useEffect(() => {

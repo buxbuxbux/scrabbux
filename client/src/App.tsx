@@ -1,51 +1,37 @@
-import React, { useEffect, useState } from 'react'
-import { Pane, Menu } from 'evergreen-ui'
-import './App.css'
-import { LetterBox } from './components/letter-box'
-import Box from 'ui-box'
-import { BoardState } from './types/board'
-import { useRealTimeUpdates } from './state/realtime-updater'
-import { useAppDispatch, useAppSelector } from './state/hooks'
-import { setBoard } from './state/board-slice'
+import React from 'react'
+import { SquareBox } from './components/square-box'
+import { Container, Grid, GridItem } from '@chakra-ui/react'
+import { PlayableBox } from './components/play-box'
+import { useBoardState } from './services/board-state.service'
+import { match } from 'ts-pattern'
+import { getId } from './services/square-id'
 
 const App = () => {
-  const dispatch = useAppDispatch()
-  const boardState = useAppSelector(state => state.boardSlice)
-
-  useEffect(() => {
-    fetch(
-      'api/board-state',
-      {
-        method: 'GET',
-      }
-    )
-      .then(res => res.json())
-      .then(response => {
-        // console.log(response)
-        dispatch(setBoard(response))
-      })
-      .catch(error => console.log(error))
-  }, [dispatch])
-
-  useRealTimeUpdates()
-
-  console.log(boardState)
+  const boardState = useBoardState()
 
   return (
-    <Pane>
-      <Menu>
-      </Menu>
-      <br />
-      <Box whiteSpace='nowrap'>
-        {
-          boardState && boardState.board.map(row =>
-            <><Box display='inline-block'>
-              {row.map((item, index) =>
-                <LetterBox {...item} key={'row' + index}></LetterBox>)}
-            </Box></>)
-        }
-      </Box>
-    </Pane>
+    <Container>
+      <Container mt='10'>
+        Letters made: {boardState.score?.words?.join(', ')}
+      </Container>
+      <Container mt='2'>
+        Score: {boardState.score?.round}
+      </Container>
+      <Container mt='20'>
+        <Grid templateColumns='repeat(15, 1fr)'
+          templateRows='repeat(15, 1fr)' w='100%' h='100%' rowGap='0.5' columnGap='0.5'>
+          {boardState.board.map((y) =>
+            y.map((x) => <SquareBox key={getId(x)} square={x} />))
+          }
+        </Grid>
+      </Container>
+      <Container ml='40' mt='4' w='50%'>
+        <Grid templateColumns='repeat(7, 1fr)'
+          w='100%' h='100%' rowGap='0.5' columnGap='0.5'>
+          {boardState.bench.map((l) => <SquareBox key={getId(l)} square={l} />)}
+        </Grid>
+      </Container>
+    </Container>
   )
 }
 

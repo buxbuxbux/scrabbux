@@ -45,6 +45,16 @@
             {
                 "code": 90
             }
+        ],
+        "keyword-spacing": [
+            "error",
+            {
+                "before": true,
+                "after": true
+            }
+        ],
+        "block-spacing": [
+            "error"
         ]
     },
     "globals": {

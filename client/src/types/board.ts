@@ -1,36 +1,57 @@
+export type BoardCoordinates = {
+  type: 'Board'
+  x: number
+  y: number
+}
+
+export type BenchCoordinates = {
+  type: 'Bench'
+  index: number
+}
+
+export type Position = BoardCoordinates | BenchCoordinates
+
 export type Letter = {
   type: 'Letter'
+  position: Position
   display: string
   value: number
 }
 
 export type Premium = {
   type: 'Premium'
+  position: Position
   actions: 'Letter' | 'Word'
   multiplier: number
 }
 
+export type Center = {
+  type: 'Center'
+  position: Position
+}
+
 export type None = {
   type: 'None'
+  position: Position
 }
 
-export type Square = Letter | Premium | None
+export type Playable = {
+  type: 'Playable'
+  position: Position
+  faceValue: Letter
+  previous: Square
+}
 
-export type Row<T extends number> = Tuple<Square, T>
+export type Square = Letter | Premium | Center | None | Playable
 
-export type BoardState = {
+export type Board = {
   board: Square[][]
-  // players: Tuple<Square[], TPlayers>
-  // unusedLetters: Square[]
+  bench: Square[]
+  selectedPlayBox?: Playable
+  score: {
+    round: number,
+    total: number,
+    words: string[]
+  }
+  // moveDraft: Move[]
 }
-
-export type Move = {
-  letter: Letter
-  xAxis: number
-  yAxis: number
-}
-
-type Tuple<T, N extends number> =
-    N extends N ? number extends N ? T[] : _TupleOf<T, N, []> : never
-type _TupleOf<T, N extends number, R extends unknown[]> =
-    R['length'] extends N ? R : _TupleOf<T, N, [T, ...R]>

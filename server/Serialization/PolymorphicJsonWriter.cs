@@ -1,16 +1,16 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Scrabbux;
+namespace Scrabbux.Serialization;
 
-public sealed class SquareJsonWriter : JsonConverter<ISquare>
+public sealed class PolymorphicJsonWriter<T> : JsonConverter<T>
 {
     public override bool CanConvert(Type type)
     {
-        return typeof(ISquare).IsAssignableFrom(type);
+        return typeof(T).IsAssignableFrom(type);
     }
 
-    public override ISquare Read(
+    public override T Read(
         ref Utf8JsonReader reader,
         Type typeToConvert,
         JsonSerializerOptions options)
@@ -18,9 +18,9 @@ public sealed class SquareJsonWriter : JsonConverter<ISquare>
 
     public override void Write(
         Utf8JsonWriter writer,
-        ISquare value,
+        T value,
         JsonSerializerOptions options)
     {
-        JsonSerializer.Serialize(writer, (object)value, options);
+        JsonSerializer.Serialize(writer, (object)value!, options);
     }
 }
