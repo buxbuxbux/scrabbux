@@ -1,4 +1,3 @@
-import { current } from '@reduxjs/toolkit'
 import { match } from 'ts-pattern'
 import { Letter, Playable } from '../../types/board'
 
@@ -10,11 +9,11 @@ export class Scored {
   constructor(square?: Playable | Letter) {
     this.multiple = 1
 
-    if (square?.type === 'Letter'){
+    if (square?.type === 'Letter') {
       this.word = square.display
       this.score = square.value
     }
-    else if (square?.type === 'Playable'){
+    else if (square?.type === 'Playable') {
       this.word = square.faceValue.display
       this.score = square.faceValue.value
       // eslint-disable-next-line no-debugger

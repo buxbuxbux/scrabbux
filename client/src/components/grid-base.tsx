@@ -14,7 +14,6 @@ type GridBaseProps = {
   onClick?: MouseEventHandler<HTMLDivElement>
 }
 
-
 export const GridBase = (props: GridBaseProps) =>  {
   const dispatch = useAppDispatch()
   const boardState = useAppSelector(state => state.boardSlice)

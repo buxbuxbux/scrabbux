@@ -6,5 +6,157 @@
     "á": {
         "value": 2,
         "count": 2
+    },
+    "b": {
+        "value": 3,
+        "count": 2
+    },
+    "c": {
+        "value": 2,
+        "count": 3
+    },
+    "č": {
+        "value": 4,
+        "count": 1
+    },
+    "d": {
+        "value": 1,
+        "count": 3
+    },
+    "ď": {
+        "value": 8,
+        "count": 1
+    },
+    "e": {
+        "value": 1,
+        "count": 5
+    },
+    "é": {
+        "value": 3,
+        "count": 2
+    },
+    "ě": {
+        "value": 3,
+        "count": 2
+    },
+    "f": {
+        "value": 5,
+        "count": 1
+    },
+    "g": {
+        "value": 5,
+        "count": 1
+    },
+    "h": {
+        "value": 2,
+        "count": 3
+    },
+    "i": {
+        "value": 1,
+        "count": 4
+    },
+    "í": {
+        "value": 2,
+        "count": 3
+    },
+    "j": {
+        "value": 2,
+        "count": 2
+    },
+    "k": {
+        "value": 1,
+        "count": 3
+    },
+    "l": {
+        "value": 1,
+        "count": 3
+    },
+    "m": {
+        "value": 2,
+        "count": 3
+    },
+    "n": {
+        "value": 1,
+        "count": 5
+    },
+    "ň": {
+        "value": 6,
+        "count": 1
+    },
+    "o": {
+        "value": 1,
+        "count": 6
+    },
+    "ó": {
+        "value": 7,
+        "count": 1
+    },
+    "p": {
+        "value": 1,
+        "count": 3
+    },
+    "r": {
+        "value": 1,
+        "count": 3
+    },
+    "ř": {
+        "value": 4,
+        "count": 2
+    },
+    "s": {
+        "value": 1,
+        "count": 4
+    },
+    "š": {
+        "value": 4,
+        "count": 2
+    },
+    "t": {
+        "value": 1,
+        "count": 4
+    },
+    "ť": {
+        "value": 7,
+        "count": 1
+    },
+    "u": {
+        "value": 2,
+        "count": 3
+    },
+    "ú": {
+        "value": 5,
+        "count": 1
+    },
+    "ů": {
+        "value": 4,
+        "count": 1
+    },
+    "v": {
+        "value": 4,
+        "count": 1
+    },
+    "x": {
+        "value": 10,
+        "count": 1
+    },
+    "y": {
+        "value": 2,
+        "count": 2
+    },
+    "ý": {
+        "value": 4,
+        "count": 2
+    },
+    "z": {
+        "value": 2,
+        "count": 2
+    },
+    "ž": {
+        "value": 4,
+        "count": 1
+    },
+    " ": {
+        "value": 0,
+        "count": 2
     }
 }

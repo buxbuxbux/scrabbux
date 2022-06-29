@@ -6,7 +6,7 @@ import { useBoardState } from './services/board-state.service'
 import { match } from 'ts-pattern'
 import { getId } from './services/square-id'
 
-const App = () => {
+export const App = () => {
   const boardState = useBoardState()
 
   return (
@@ -34,6 +34,3 @@ const App = () => {
     </Container>
   )
 }
-
-
-export default App
