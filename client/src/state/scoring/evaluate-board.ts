@@ -15,7 +15,7 @@ export const evaluate = (state: Board) => {
   
     const x = (i: number) => getPiece(state, { ...position, x: position.x + i })
     const y = (i: number) => getPiece(state, { ...position, y: position.y + i })
-  
+    
     const addUpLetters = (axis: typeof x | typeof y, dir: Direction = 1): Scored => {
       const result: Scored = dir === 1
         ? new Scored(playable)

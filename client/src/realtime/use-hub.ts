@@ -34,7 +34,7 @@ export function useHub(hubConnection?: HubConnection) {
         .then(onStateUpdatedCallback)
         .catch(reason => setError(reason))
       onStateUpdatedCallback()
-
+      
       return () => {
         startPromise.then(() => {
           hubConnection.stop()
