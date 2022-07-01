@@ -58,16 +58,13 @@ public static class DictionaryLoader
         letters = GetFromDictionary<Dictionary<string, ValueCount>>("letters")
             .ToDictionary(k => k.Key, v => v.Value.Select(d =>
                 new Letter(d.Key, d.Value.Value, d.Value.Count)).ToArray());
-
-        Console.WriteLine("adsf");
-        Console.WriteLine(string.Join("", letters.Keys.Select(k => k)));
     }
 
     public static string[] GetWords(string language) => words[language];
 
     public static Letter[] GetLetters(string language) => letters[language];
 
-    public static Dictionary<string, T> GetFromDictionary<T>(string fileName)
+    private static Dictionary<string, T> GetFromDictionary<T>(string fileName)
         => new Dictionary<string, T>(
             from dir in Directory.GetDirectories($"{DirectoryName}/dictionaries")
             let bytes = File.ReadAllBytes($"{dir}/{fileName}.json")
