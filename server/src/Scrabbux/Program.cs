@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.SignalR;
 using Scrabbux;
 using Scrabbux.Serialization;
+using FluffyIdGenerator;
+
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors();
@@ -14,6 +16,7 @@ app.MapGet("/api/board-state/{gameId?}", (string? gameId) =>
     return Results.Json(board, Serialization.Options);
 });
 app.MapHub<BoardHub>("/live/boardhub");
+
 app.MapGet("/post", (a) => a.RequestServices.GetRequiredService<IHubContext<BoardHub>>().Clients.All.SendAsync("ReceiveMessage", BoardGenerator.GetRandomMove()));
 
 app.MapGet("/prdel", async (a) =>
@@ -27,6 +30,8 @@ app.MapGet("/prdel", async (a) =>
 
 app.MapGet("/dict/{lang}", (string lang) => DictionaryLoader.GetWords(lang));
 app.MapGet("/letters/{lang}", (string lang) => new LetterStack(lang).GetLetters(7));
+
+app.MapGet("/fluf", () => Fluffy.GetDefaultId());
 
 app.UseCors(p => p
     .WithOrigins("http://localhost:3000")
