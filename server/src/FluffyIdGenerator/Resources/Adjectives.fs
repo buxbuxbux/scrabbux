@@ -227,5 +227,4 @@ let adjectives =
        "worrisome"
        "wrong"
        "zany"
-       "zealous"
-        |]
+       "zealous" |]

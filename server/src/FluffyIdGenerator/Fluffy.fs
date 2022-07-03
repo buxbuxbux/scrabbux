@@ -11,7 +11,7 @@ type Fluf =
     | Adjective
     | Color
     | Animal
-    | ThreeDigitNumber
+    | NumberLetter
 
 module Fluffy =
     let private matchFluf fluf =
@@ -19,7 +19,7 @@ module Fluffy =
         | Adjective -> adjectives[Seq.length adjectives |> GetInt32]
         | Color -> colors[Seq.length colors |> GetInt32]
         | Animal -> animals[Seq.length animals |> GetInt32]
-        | ThreeDigitNumber -> GetInt32(100, 999) |> string
+        | NumberLetter -> GetInt32(1000, 10000) |> string
 
     let GetId ([<ParamArray>] flufs) =
         flufs |> Seq.map matchFluf |> String.concat "-"
@@ -28,4 +28,4 @@ module Fluffy =
         GetId [ Adjective
                 Color
                 Animal
-                ThreeDigitNumber ]
+                NumberLetter ]
